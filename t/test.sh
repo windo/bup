@@ -341,7 +341,7 @@ mkdir $D/d $D/d/e
 WVPASS bup random 512 >$D/f
 WVPASS bup index -ux $D
 bup save -n exclude-bupdir $D
-WVPASSEQ "$(bup ls -a exclude-bupdir/latest/$TOP/$D/)" "a
+WVPASSEQ "$(bup ls -AF exclude-bupdir/latest/$TOP/$D/)" "a
 b
 d/
 f"
@@ -586,7 +586,7 @@ touch $D/b
 mkdir $D/c
 WVPASS bup index -ux $D
 bup save --strip -n bupdir $D
-WVPASSEQ "$(bup ls bupdir/latest/)" "a
+WVPASSEQ "$(bup ls -F bupdir/latest/)" "a
 b
 c/"
 WVPASS bup index -f $INDEXFILE --exclude=$D/c -ux $D
@@ -607,7 +607,7 @@ mkdir -p $D/hourly.0/buptest/c/d
 touch $D/hourly.0/buptest/c/d/e
 WVPASS true
 WVPASS bup import-rsnapshot $D/
-WVPASSEQ "$(bup ls buptest/latest/)" "a/
+WVPASSEQ "$(bup ls -F buptest/latest/)" "a/
 c/"
 
 
@@ -686,7 +686,7 @@ WVSTART "save disjoint top-level directories"
     WVPASS bup save -t -n src $(pwd)/$D/x "$tmpdir"
 
     # For now, assume that "ls -a" and "sort" use the same order.
-    WVPASSEQ "$(bup ls -a src/latest)" \
+    WVPASSEQ "$(bup ls -AF src/latest)" \
         "$(echo -e "$pwd_top/\n$tmp_top/" | sort)"
 ) || WVFAIL
 
