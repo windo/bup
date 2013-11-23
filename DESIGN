@@ -1,4 +1,3 @@
-
 The Crazy Hacker's Crazy Guide to Bup Craziness
 ===============================================
 
@@ -81,7 +80,7 @@ so on) that allow you to explore your repository and help debug when things
 go wrong.
 
 Now, bup does use these tools a little bit differently than plain git.  We
-need to do this in order to address two deficiencies in git when used for
+need to do this in order to address three deficiencies in git when used for
 large backups, namely a) git bogs down and crashes if you give it really
 large files; b) git is too slow when you give it too many files; and c) git
 doesn't store detailed filesystem metadata.
